@@ -1,18 +1,31 @@
 #!/bin/bash -x
-read -p "Enter how many times you want to flip coin: " num
+
 head=0
 tail=0
-for((i=1; i<=$num; i++))
+while [ $head -le 21 ] && [ $tail -le 21 ]
 do
-toss=$(($RANDOM%2))
-if [ $toss -eq 1 ]
-then
-	echo "Its head"
-	head=$(($head+1))
-else
-	echo "Its tail"
-	tail=$(($tail+1))
-fi
+        flip=$(($RANDOM%2))
+        if [ $flip -eq 1 ]
+        then
+                head=$(($head+1))
+        else
+                tail=$(($tail+1))
+        fi
+		if [ $head -gt $tail ]
+		then
+			echo "match tie"
+		else
+			echo "No.of heads= $head"
+			echo "No.of tails= $tail"
+			if [ $head -gt $tail ]
+			then
+				echo "head won"
+				win=$(($head-$tail))
+				echo "head won by $win"
+			else
+				echo "tail won"
+				win=$(($tail-$head))
+				echo "tail won by $win"
+			fi
+		fi
 done
-echo "no.of head= $head"
-echo "no.of tail= $tail"
