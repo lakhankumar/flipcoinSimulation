@@ -11,7 +11,7 @@ do
         else
                 tail=$(($tail+1))
         fi
-		if [ $head -gt $tail ]
+		if [ $head -eq $tail ]
 		then
 			echo "match tie"
 		else
