@@ -11,9 +11,10 @@ do
         else
                 tail=$(($tail+1))
         fi
-		if [ $head -gt $tail ]
+		if [ $head -eq $tail ]
 		then
 			echo "match tie"
+			continue
 		else
 			echo "No.of heads= $head"
 			echo "No.of tails= $tail"
